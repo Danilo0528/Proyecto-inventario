@@ -3,16 +3,16 @@ const cors = require('cors');
 const { getConnection } = require('./db/connect-mongo-db');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;//puerto donde coectorrere el proy
 
 // Conexión a la base de datos
 getConnection();
 
-// Middlewares
+// Middlewares para que todo funcione
 app.use(cors());
 app.use(express.json());
 
-// Rutas
+// Rutas para las api
 app.use('/api/generos', require('./routes/genero'));
 app.use('/api/directores', require('./routes/director'));
 app.use('/api/productoras', require('./routes/productora'));
