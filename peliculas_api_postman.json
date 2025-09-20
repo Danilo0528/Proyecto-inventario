@@ -1,0 +1,496 @@
+{
+  "info": {
+    "name": "Películas API",
+    "_postman_id": "peliculas-api-collection",
+    "description": "Colección de pruebas para la API de Películas (con URL fija)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Géneros",
+      "item": [
+        {
+          "name": "Crear Género",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/generos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "generos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Acci\\u00f3n\",\n  \"estado\": \"Activo\",\n  \"descripcion\": \"Pel\\u00edculas llenas de aventura y emoci\\u00f3n\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar Géneros",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/generos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "generos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Géneros Activos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/generos/activos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "generos",
+                "activos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Género",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/generos/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "generos",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Acci\\u00f3n y Aventura\",\n  \"estado\": \"Activo\",\n  \"descripcion\": \"Pel\\u00edculas con mucha acci\\u00f3n y aventuras \\u00e9picas\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar Género",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/generos/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "generos",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Directores",
+      "item": [
+        {
+          "name": "Crear Director",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/directores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "directores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Christopher Nolan\",\n  \"estado\": \"Activo\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar Directores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/directores",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "directores"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Directores Activos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/directores/activos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "directores",
+                "activos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar Director",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/directores/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "directores",
+                ":id"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Christopher Edward Nolan\",\n  \"estado\": \"Activo\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar Director",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/directores/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "directores",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Productoras",
+      "item": [
+        {
+          "name": "Crear Productora",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/productoras",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "productoras"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Warner Bros\",\n  \"estado\": \"Activo\",\n  \"slogan\": \"Entertainment for Everyone\",\n  \"descripcion\": \"Una de las productoras m\\u00e1s grandes de Hollywood\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar Productoras",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/productoras",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "productoras"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Productoras Activas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/productoras/activas",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "productoras",
+                "activas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar Productora",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/productoras/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "productoras",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tipos",
+      "item": [
+        {
+          "name": "Crear Tipo Película",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/tipos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "tipos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Pel\\u00edcula\",\n  \"descripcion\": \"Contenido cinematogr\\u00e1fico de larga duraci\\u00f3n\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Crear Tipo Serie",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/tipos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "tipos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Serie\",\n  \"descripcion\": \"Contenido epis\\u00f3dico de televisi\\u00f3n\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar Tipos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/tipos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "tipos"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Medias",
+      "item": [
+        {
+          "name": "Crear Media",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:3000/api/medias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medias"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serial\": \"PEL001\",\n  \"titulo\": \"Inception\",\n  \"sinopsis\": \"Un ladr\\u00f3n que roba secretos corporativos a trav\\u00e9s del uso de la tecnolog\\u00eda de compartir sue\\u00f1os recibe la tarea inversa de plantar una idea en la mente de un CEO.\",\n  \"url\": \"https://ejemplo.com/inception\",\n  \"imagen\": \"https://ejemplo.com/inception-poster.jpg\",\n  \"anioEstreno\": 2010,\n  \"genero\": \"ID_DEL_GENERO_ACCION\",\n  \"director\": \"ID_DEL_DIRECTOR_NOLAN\",\n  \"productora\": \"ID_DE_WARNER_BROS\",\n  \"tipo\": \"ID_DEL_TIPO_PELICULA\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Listar Medias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/medias",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medias"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Ver Media por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/medias/:id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "medias",
+                ":id"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

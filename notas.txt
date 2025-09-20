@@ -23,4 +23,63 @@ Hide
   }
 }
 
+{
+  "serial": "PEL001",
+  "titulo": "Inception",
+  "sinopsis": "Un ladrón que roba secretos corporativos a través del uso de la tecnología de compartir sueños recibe la tarea inversa de plantar una idea en la mente de un CEO.",
+  "url": "https://ejemplo.com/inception",
+  "imagen": "https://ejemplo.com/inception-poster.jpg",
+  "anioEstreno": 2010,
+  "genero": "68b94d358be7e989676ffe42",
+  "director": "68b94d658be7e989676ffe44",
+  "productora": "68b94d8c8be7e989676ffe47",
+  "tipo": "68b94db68be7e989676ffe4a"
+}
 
+{
+    "serial": "PEL0d001",
+    "titulo": "Inception",
+    "sinopsis": "Un ladrón qdddue roba secretos corporativos a través del uso de la tecnología de compartir sueños recibe la tarea inversa de plantar una idea en la mente de un CEO.",
+    "url": "https://ejemplo.scom/inception",
+    "imagen": "https://ejemplo.com/dinception-poster.jpg",
+    "anioEstreno": 21010,
+    "genero": {
+        "_id": "68b94d358be7e989676ffe42",
+        "nombre": "Acción",
+        "estado": "Activo",
+        "descripcion": "Películas llenas de aventura y emoción",
+        "fechaCreacion": "2025-09-04T08:26:29.900Z",
+        "fechaActualizacion": "2025-09-04T08:26:29.904Z",
+        "__v": 0
+    },
+    "director": {
+        "_id": "68b94d658be7e989676ffe44",
+        "nombres": "Christopher Nolan",
+        "estado": "Activo",
+        "fechaCreacion": "2025-09-04T08:27:17.975Z",
+        "fechaActualizacion": "2025-09-04T08:27:17.992Z",
+        "__v": 0
+    },
+    "productora": {
+        "_id": "68b94d8c8be7e989676ffe47",
+        "nombre": "Warner Bros",
+        "estado": "Activo",
+        "slogan": "Entertainment for Everyone",
+        "descripcion": "Una de las productoras más grandes de Hollywood",
+        "fechaCreacion": "2025-09-04T08:27:56.982Z",
+        "fechaActualizacion": "2025-09-04T08:27:56.991Z",
+        "__v": 0
+    },
+    "tipo": {
+        "_id": "68b94db68be7e989676ffe4a",
+        "nombre": "Película",
+        "descripcion": "Contenido cinematográfico de larga duración",
+        "fechaCreacion": "2025-09-04T08:28:38.672Z",
+        "fechaActualizacion": "2025-09-04T08:28:38.687Z",
+        "__v": 0
+    },
+    "_id": "68b94e4d8be7e989676ffe5f",
+    "fechaCreacion": "2025-09-04T08:31:09.295Z",
+    "fechaActualizacion": "2025-09-04T08:31:09.303Z",
+    "__v": 0
+}

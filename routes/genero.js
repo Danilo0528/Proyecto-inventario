@@ -44,14 +44,17 @@ router.post(
 
 // GET - Obtener todos los géneros
 router.get('/', async (req, res) => {
-  try {
-    const generos = await Genero.find();
-    res.json(generos);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ msg: 'Error del servidor' });
-  }
+    try {
+        console.log('--- Antes de la consulta a la base de datos ---'); // <-- Añade esto
+        const generos = await Genero.find();
+        console.log('--- Después de la consulta a la base de datos ---'); // <-- Añade esto
+        res.json(generos);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: 'Error del servidor' });
+    }
 });
+
 
 // GET - Obtener géneros activos
 router.get('/activos', async (req, res) => {
