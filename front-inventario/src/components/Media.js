@@ -73,10 +73,10 @@ const Media = () => {
               <td>{media.serial}</td>
               <td>{media.titulo}</td>
               <td>{media.anioEstreno}</td>
-              <td>{media.genero.nombre}</td>
-              <td>{media.director.nombres}</td>
-              <td>{media.productora.nombre}</td>
-              <td>{media.tipo.nombre}</td>
+              <td>{media.genero?.nombre}</td>
+              <td>{media.director?.nombres}</td>
+              <td>{media.productora?.nombre}</td>
+              <td>{media.tipo?.nombre}</td>
               <td>
                 <button onClick={() => handleEdit(media)}>Editar</button>
                 <button onClick={() => handleDelete(media._id)}>Eliminar</button>
