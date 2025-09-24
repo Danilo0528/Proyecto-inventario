@@ -50,31 +50,33 @@ const Director = () => {
   };
 
   return (
-    <div>
-      <h2>Módulo Director</h2>
-      <button onClick={() => { setShowForm(true); setCurrentDirector(null); }}>Nuevo Director</button>
-      {showForm && <DirectorForm onSave={handleSave} currentDirector={currentDirector} />}
-      <table>
-        <thead>
-          <tr>
-            <th>Nombres</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {directores.map((director) => (
-            <tr key={director._id}>
-              <td>{director.nombres}</td>
-              <td>{director.estado}</td>
-              <td>
-                <button onClick={() => handleEdit(director)}>Editar</button>
-                <button onClick={() => handleDelete(director._id)}>Eliminar</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="container mt-4">
+        <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2 className="mb-0">Módulo Director</h2>
+            <button className="btn btn-primary" onClick={() => { setShowForm(true); setCurrentDirector(null); }}>Nuevo Director</button>
+        </div>
+        {showForm && <DirectorForm onSave={handleSave} currentDirector={currentDirector} onClose={() => setShowForm(false)} />}
+        <table className="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Nombres</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {directores.map((director) => (
+                    <tr key={director._id}>
+                        <td>{director.nombres}</td>
+                        <td>{director.estado}</td>
+                        <td>
+                            <button className="btn btn-secondary btn-sm" onClick={() => handleEdit(director)}>Editar</button>
+                            <button className="btn btn-danger btn-sm ms-2" onClick={() => handleDelete(director._id)}>Eliminar</button>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
     </div>
   );
 }

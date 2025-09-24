@@ -50,31 +50,33 @@ const Tipo = () => {
   };
 
   return (
-    <div>
-      <h2>Módulo Tipo</h2>
-      <button onClick={() => { setShowForm(true); setCurrentTipo(null); }}>Nuevo Tipo</button>
-      {showForm && <TipoForm onSave={handleSave} currentTipo={currentTipo} />}
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tipos.map((tipo) => (
-            <tr key={tipo._id}>
-              <td>{tipo.nombre}</td>
-              <td>{tipo.descripcion}</td>
-              <td>
-                <button onClick={() => handleEdit(tipo)}>Editar</button>
-                <button onClick={() => handleDelete(tipo._id)}>Eliminar</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="container mt-4">
+        <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2 className="mb-0">Módulo Tipo</h2>
+            <button className="btn btn-primary" onClick={() => { setShowForm(true); setCurrentTipo(null); }}>Nuevo Tipo</button>
+        </div>
+        {showForm && <TipoForm onSave={handleSave} currentTipo={currentTipo} onClose={() => setShowForm(false)} />}
+        <table className="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {tipos.map((tipo) => (
+                    <tr key={tipo._id}>
+                        <td>{tipo.nombre}</td>
+                        <td>{tipo.descripcion}</td>
+                        <td>
+                            <button className="btn btn-secondary btn-sm" onClick={() => handleEdit(tipo)}>Editar</button>
+                            <button className="btn btn-danger btn-sm ms-2" onClick={() => handleDelete(tipo._id)}>Eliminar</button>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
     </div>
   );
 }

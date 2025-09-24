@@ -50,35 +50,37 @@ const Productora = () => {
   };
 
   return (
-    <div>
-      <h2>Módulo Productora</h2>
-      <button onClick={() => { setShowForm(true); setCurrentProductora(null); }}>Nueva Productora</button>
-      {showForm && <ProductoraForm onSave={handleSave} currentProductora={currentProductora} />}
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Estado</th>
-            <th>Slogan</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {productoras.map((productora) => (
-            <tr key={productora._id}>
-              <td>{productora.nombre}</td>
-              <td>{productora.estado}</td>
-              <td>{productora.slogan}</td>
-              <td>{productora.descripcion}</td>
-              <td>
-                <button onClick={() => handleEdit(productora)}>Editar</button>
-                <button onClick={() => handleDelete(productora._id)}>Eliminar</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="container mt-4">
+        <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2 className="mb-0">Módulo Productora</h2>
+            <button className="btn btn-primary" onClick={() => { setShowForm(true); setCurrentProductora(null); }}>Nueva Productora</button>
+        </div>
+        {showForm && <ProductoraForm onSave={handleSave} currentProductora={currentProductora} onClose={() => setShowForm(false)} />}
+        <table className="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Slogan</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {productoras.map((productora) => (
+                    <tr key={productora._id}>
+                        <td>{productora.nombre}</td>
+                        <td>{productora.estado}</td>
+                        <td>{productora.slogan}</td>
+                        <td>{productora.descripcion}</td>
+                        <td>
+                            <button className="btn btn-secondary btn-sm" onClick={() => handleEdit(productora)}>Editar</button>
+                            <button className="btn btn-danger btn-sm ms-2" onClick={() => handleDelete(productora._id)}>Eliminar</button>
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
     </div>
   );
 }

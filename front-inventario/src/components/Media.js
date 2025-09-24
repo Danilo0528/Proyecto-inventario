@@ -50,41 +50,25 @@ const Media = () => {
   };
 
   return (
-    <div>
-      <h2>Módulo Media</h2>
-      <button onClick={() => { setShowForm(true); setCurrentMedia(null); }}>Nueva Media</button>
-      {showForm && <MediaForm onSave={handleSave} currentMedia={currentMedia} />}
-      <table>
-        <thead>
-          <tr>
-            <th>Serial</th>
-            <th>Título</th>
-            <th>Año Estreno</th>
-            <th>Género</th>
-            <th>Director</th>
-            <th>Productora</th>
-            <th>Tipo</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {medias.map((media) => (
-            <tr key={media._id}>
-              <td>{media.serial}</td>
-              <td>{media.titulo}</td>
-              <td>{media.anioEstreno}</td>
-              <td>{media.genero?.nombre}</td>
-              <td>{media.director?.nombres}</td>
-              <td>{media.productora?.nombre}</td>
-              <td>{media.tipo?.nombre}</td>
-              <td>
-                <button onClick={() => handleEdit(media)}>Editar</button>
-                <button onClick={() => handleDelete(media._id)}>Eliminar</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="container mt-4">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2 className="mb-0">Catálogo de Películas</h2>
+        <button className="btn btn-primary" onClick={() => { setShowForm(true); setCurrentMedia(null); }}>Nueva Media</button>
+      </div>
+      {showForm && <MediaForm onSave={handleSave} currentMedia={currentMedia} onClose={() => setShowForm(false)} />}
+      <div className="media-grid">
+        {medias.map((media) => (
+          <div key={media._id} className="media-card">
+            <img src={media.imagen} alt={media.titulo} />
+            <div className="media-card-body">
+              <h5 className="media-card-title">{media.titulo}</h5>
+              <p className="media-card-text">{media.anioEstreno}</p>
+              <button className="btn btn-secondary btn-sm" onClick={() => handleEdit(media)}>Editar</button>
+              <button className="btn btn-danger btn-sm ms-2" onClick={() => handleDelete(media._id)}>Eliminar</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
