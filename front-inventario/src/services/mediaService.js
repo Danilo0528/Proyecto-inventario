@@ -1,28 +1,21 @@
-import axios from 'axios';
-
-const apiClient = axios.create({
-  baseURL: 'http://localhost:3000/api/medias',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
+import apiClient from './apiClient';
 
 export const getMedias = () => {
-  return apiClient.get('/');
+  return apiClient.get('/medias');
 };
 
 export const getMediaById = (id) => {
-  return apiClient.get(`/${id}`);
+  return apiClient.get(`/medias/${id}`);
 };
 
 export const createMedia = (data) => {
-  return apiClient.post('/', data);
+  return apiClient.post('/medias', data);
 };
 
 export const updateMedia = (id, data) => {
-  return apiClient.put(`/${id}`, data);
+  return apiClient.put(`/medias/${id}`, data);
 };
 
 export const deleteMedia = (id) => {
-  return apiClient.delete(`/${id}`);
+  return apiClient.delete(`/medias/${id}`);
 };

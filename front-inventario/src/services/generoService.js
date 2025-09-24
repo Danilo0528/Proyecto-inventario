@@ -1,28 +1,21 @@
-import axios from 'axios';
-
-const apiClient = axios.create({
-  baseURL: 'http://localhost:3000/api/generos',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
+import apiClient from './apiClient';
 
 export const getGeneros = () => {
-  return apiClient.get('/');
+  return apiClient.get('/generos');
 };
 
 export const getGeneroById = (id) => {
-  return apiClient.get(`/${id}`);
+  return apiClient.get(`/generos/${id}`);
 };
 
 export const createGenero = (data) => {
-  return apiClient.post('/', data);
+  return apiClient.post('/generos', data);
 };
 
 export const updateGenero = (id, data) => {
-  return apiClient.put(`/${id}`, data);
+  return apiClient.put(`/generos/${id}`, data);
 };
 
 export const deleteGenero = (id) => {
-  return apiClient.delete(`/${id}`);
+  return apiClient.delete(`/generos/${id}`);
 };

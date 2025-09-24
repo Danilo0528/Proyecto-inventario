@@ -1,28 +1,21 @@
-import axios from 'axios';
-
-const apiClient = axios.create({
-  baseURL: 'http://localhost:3000/api/productoras',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
+import apiClient from './apiClient';
 
 export const getProductoras = () => {
-  return apiClient.get('/');
+  return apiClient.get('/productoras');
 };
 
 export const getProductoraById = (id) => {
-  return apiClient.get(`/${id}`);
+  return apiClient.get(`/productoras/${id}`);
 };
 
 export const createProductora = (data) => {
-  return apiClient.post('/', data);
+  return apiClient.post('/productoras', data);
 };
 
 export const updateProductora = (id, data) => {
-  return apiClient.put(`/${id}`, data);
+  return apiClient.put(`/productoras/${id}`, data);
 };
 
 export const deleteProductora = (id) => {
-  return apiClient.delete(`/${id}`);
+  return apiClient.delete(`/productoras/${id}`);
 };

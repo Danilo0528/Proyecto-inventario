@@ -1,28 +1,21 @@
-import axios from 'axios';
-
-const apiClient = axios.create({
-  baseURL: 'http://localhost:3000/api/tipos',
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
+import apiClient from './apiClient';
 
 export const getTipos = () => {
-  return apiClient.get('/');
+  return apiClient.get('/tipos');
 };
 
 export const getTipoById = (id) => {
-  return apiClient.get(`/${id}`);
+  return apiClient.get(`/tipos/${id}`);
 };
 
 export const createTipo = (data) => {
-  return apiClient.post('/', data);
+  return apiClient.post('/tipos', data);
 };
 
 export const updateTipo = (id, data) => {
-  return apiClient.put(`/${id}`, data);
+  return apiClient.put(`/tipos/${id}`, data);
 };
 
 export const deleteTipo = (id) => {
-  return apiClient.delete(`/${id}`);
+  return apiClient.delete(`/tipos/${id}`);
 };
