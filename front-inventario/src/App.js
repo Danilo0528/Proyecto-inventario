@@ -6,6 +6,8 @@ import Genero from './components/Genero';
 import Director from './components/Director';
 import Productora from './components/Productora';
 import Tipo from './components/Tipo';
+import Media from './components/Media';
+import './App.css'; // Import App.css here
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route path='/directores' element={<Director />} />
         <Route path='/productoras' element={<Productora />} />
         <Route path='/tipos' element={<Tipo />} />
+        <Route path='/medias' element={<Media />} />
       </Routes>
     </div>
   );

@@ -1,35 +1,97 @@
 .media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr); /* 6 columns for larger screens */
+  gap: 0.5rem; /* Reduced gap */
+  padding: 0.5rem; /* Reduced padding */
+}
+
+@media (max-width: 1400px) { /* Adjust breakpoint for 5 columns */
+  .media-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1200px) { /* Adjust breakpoint for 4 columns */
+  .media-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) { /* Adjust breakpoint for 3 columns */
+  .media-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) { /* Adjust breakpoint for 2 columns */
+  .media-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) { /* Adjust breakpoint for 1 column */
+  .media-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .media-card {
+  position: relative;
   background-color: #1e1e1e;
   border: 1px solid #444;
-  border-radius: 0.25rem;
+  border-radius: 0.3rem; /* Slightly smaller border-radius */
   overflow: hidden;
   color: #ffffff;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.media-card:hover {
+    transform: translateY(-3px); /* Slightly less hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
 .media-card img {
   width: 100%;
-  height: auto;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
 }
 
 .media-card-body {
-  padding: 1rem;
+  padding: 0.4rem; /* Reduced padding */
 }
 
 .media-card-title {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.8rem; /* Smaller font size */
+  margin-bottom: 0.1rem; /* Reduced margin */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .media-card-text {
-  font-size: 0.875rem;
+  font-size: 0.7rem; /* Smaller font size */
   color: #aaaaaa;
+}
+
+.media-card-description {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 1rem;
+  max-height: 100%;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  font-size: 0.8rem;
+}
+
+.media-card:hover .media-card-description {
+  display: block;
+  transform: translateY(0);
 }
 
 .btn-primary {
@@ -57,4 +119,9 @@
 
 .table {
     color: #ffffff;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #ffffff !important;
 }

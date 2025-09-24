@@ -1,9 +1,9 @@
 import React from 'react';
-import Media from './Media';
+import MovieCatalog from './MovieCatalog';
 
 const Home = () => {
   return (
-    <Media />
+    <MovieCatalog />
   );
 };
 
