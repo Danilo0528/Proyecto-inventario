@@ -55,8 +55,7 @@ const Director = () => {
             <h2 className="mb-0">Módulo Director</h2>
             <button className="btn btn-primary" onClick={() => { setShowForm(true); setCurrentDirector(null); }}>Nuevo Director</button>
         </div>
-        {showForm && <DirectorForm onSave={handleSave} currentDirector={currentDirector} onClose={() => setShowForm(false)} />}
-        <table className="table table-dark table-striped">
+                <table className="table table-dark table-striped">
             <thead>
                 <tr>
                     <th>Nombres</th>
@@ -77,6 +76,21 @@ const Director = () => {
                 ))}
             </tbody>
         </table>
+
+        {/* Modal para DirectorForm */}
+        <div className={`modal fade ${showForm ? 'show d-block' : ''}`} tabIndex="-1" style={{ backgroundColor: showForm ? 'rgba(0,0,0,0.5)' : '' }}>
+            <div className="modal-dialog modal-lg modal-dialog-centered">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">{currentDirector ? 'Editar Director' : 'Nuevo Director'}</h5>
+                        <button type="button" className="btn-close btn-close-white" aria-label="Close" onClick={() => setShowForm(false)}></button>
+                    </div>
+                    <div className="modal-body">
+                        <DirectorForm onSave={handleSave} currentDirector={currentDirector} onClose={() => setShowForm(false)} />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   );
 }

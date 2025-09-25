@@ -55,8 +55,7 @@ const Productora = () => {
             <h2 className="mb-0">Módulo Productora</h2>
             <button className="btn btn-primary" onClick={() => { setShowForm(true); setCurrentProductora(null); }}>Nueva Productora</button>
         </div>
-        {showForm && <ProductoraForm onSave={handleSave} currentProductora={currentProductora} onClose={() => setShowForm(false)} />}
-        <table className="table table-dark table-striped">
+                <table className="table table-dark table-striped">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -81,6 +80,21 @@ const Productora = () => {
                 ))}
             </tbody>
         </table>
+
+        {/* Modal para ProductoraForm */}
+        <div className={`modal fade ${showForm ? 'show d-block' : ''}`} tabIndex="-1" style={{ backgroundColor: showForm ? 'rgba(0,0,0,0.5)' : '' }}>
+            <div className="modal-dialog modal-lg modal-dialog-centered">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">{currentProductora ? 'Editar Productora' : 'Nueva Productora'}</h5>
+                        <button type="button" className="btn-close btn-close-white" aria-label="Close" onClick={() => setShowForm(false)}></button>
+                    </div>
+                    <div className="modal-body">
+                        <ProductoraForm onSave={handleSave} currentProductora={currentProductora} onClose={() => setShowForm(false)} />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   );
 }

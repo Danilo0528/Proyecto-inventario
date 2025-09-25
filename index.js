@@ -12,8 +12,25 @@ let server;
 // Conexión a la base de datos
 getConnection();
 
-// Middlewares
-app.use(cors());
+// Middlewares - Configuración de CORS para múltiples orígenes (local y producción)
+const allowedOrigins = [
+  process.env.FRONTEND_URL || 'http://localhost:3000', // Tu frontend local
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    // Permite solicitudes sin 'origin' (como Postman o apps móviles) o si el origen está en la lista blanca
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 // Rutas

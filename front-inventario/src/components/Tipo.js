@@ -55,8 +55,7 @@ const Tipo = () => {
             <h2 className="mb-0">Módulo Tipo</h2>
             <button className="btn btn-primary" onClick={() => { setShowForm(true); setCurrentTipo(null); }}>Nuevo Tipo</button>
         </div>
-        {showForm && <TipoForm onSave={handleSave} currentTipo={currentTipo} onClose={() => setShowForm(false)} />}
-        <table className="table table-dark table-striped">
+                <table className="table table-dark table-striped">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -77,6 +76,21 @@ const Tipo = () => {
                 ))}
             </tbody>
         </table>
+
+        {/* Modal para TipoForm */}
+        <div className={`modal fade ${showForm ? 'show d-block' : ''}`} tabIndex="-1" style={{ backgroundColor: showForm ? 'rgba(0,0,0,0.5)' : '' }}>
+            <div className="modal-dialog modal-lg modal-dialog-centered">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">{currentTipo ? 'Editar Tipo' : 'Nuevo Tipo'}</h5>
+                        <button type="button" className="btn-close btn-close-white" aria-label="Close" onClick={() => setShowForm(false)}></button>
+                    </div>
+                    <div className="modal-body">
+                        <TipoForm onSave={handleSave} currentTipo={currentTipo} onClose={() => setShowForm(false)} />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
   );
 }
