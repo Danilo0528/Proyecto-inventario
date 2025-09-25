@@ -38,6 +38,9 @@ Antes de ejecutar el proyecto, es necesario configurar las variables de entorno.
 
 1.  Navega a la carpeta `front-inventario`.
 2.  Crea un archivo `.env.local`.
+REACT_APP_API_URL=http://localhost:4000/api nuestra ruta en el env.local
+# REACT_APP_API_URL=https://inventario-backend-y5ky.onrender.com/api/ para cuendo querimos ahoorar en uso del equipo
+
 3.  Añade la siguiente variable para apuntar al backend local:
 
     ```
@@ -68,7 +71,8 @@ Para correr el proyecto, necesitas tener dos terminales abiertas.
 1.  **Iniciar el Backend:**
     *   En una terminal, desde la raíz del proyecto, ejecuta:
         ```bash
-        npm start
+        cd proyecto inventario
+        node index.js
         ```
     *   El servidor se iniciará en el puerto que hayas configurado (por defecto, 4000).
 
