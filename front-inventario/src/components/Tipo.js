@@ -77,7 +77,7 @@ const Tipo = () => {
             </tbody>
         </table>
 
-        {/* Modal para TipoForm */}
+        
         <div className={`modal fade ${showForm ? 'show d-block' : ''}`} tabIndex="-1" style={{ backgroundColor: showForm ? 'rgba(0,0,0,0.5)' : '' }}>
             <div className="modal-dialog modal-lg modal-dialog-centered">
                 <div className="modal-content">

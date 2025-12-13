@@ -5,12 +5,15 @@ const Director = require('../models/Director');
 const Productora = require('../models/Productora');
 const Tipo = require('../models/Tipo');
 const { validationResult, check } = require('express-validator');
+const { verificarToken, soloAdmin } = require('../middleware/auth');
 
 const router = Router();
 
 // POST - Crear media
 router.post(
   '/',
+  verificarToken,
+  soloAdmin,
   [
     check('serial', 'El serial es obligatorio').not().isEmpty(),
     check('titulo', 'El título es obligatorio').not().isEmpty(),
@@ -87,7 +90,7 @@ router.post(
 );
 
 // GET - Obtener todas las medias con información poblada
-router.get('/', async (req, res) => {
+router.get('/', verificarToken, async (req, res) => {
   try {
     const medias = await Media.find()
       .populate('genero', 'nombre')
@@ -102,7 +105,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET - Obtener media por ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', verificarToken, async (req, res) => {
   try {
     const media = await Media.findById(req.params.id)
       .populate('genero')
@@ -121,7 +124,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // PUT - Actualizar media
-router.put('/:id', async (req, res) => {
+router.put('/:id', verificarToken, soloAdmin, async (req, res) => {
   try {
     const { titulo, sinopsis, url, imagen, anioEstreno, genero, director, productora, tipo } = req.body;
     
@@ -183,7 +186,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE - Eliminar media
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verificarToken, soloAdmin, async (req, res) => {
   try {
     const media = await Media.findByIdAndDelete(req.params.id);
     if (!media) {

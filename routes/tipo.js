@@ -1,12 +1,15 @@
 const { Router } = require('express');
 const Tipo = require('../models/Tipo');
 const { validationResult, check } = require('express-validator');
+const { verificarToken, soloAdmin } = require('../middleware/auth');
 
 const router = Router();
 
 // POST - Crear tipo
 router.post(
   '/',
+  verificarToken,
+  soloAdmin,
   [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
   ],
@@ -40,7 +43,7 @@ router.post(
 );
 
 // GET - Obtener todos los tipos
-router.get('/', async (req, res) => {
+router.get('/', verificarToken, async (req, res) => {
   try {
     const tipos = await Tipo.find();
     res.json(tipos);
@@ -51,7 +54,7 @@ router.get('/', async (req, res) => {
 });
 
 // PUT - Actualizar tipo
-router.put('/:id', async (req, res) => {
+router.put('/:id', verificarToken, soloAdmin, async (req, res) => {
   try {
     const { nombre, descripcion } = req.body;
     const tipo = await Tipo.findByIdAndUpdate(
@@ -72,7 +75,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE - Eliminar tipo
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verificarToken, soloAdmin, async (req, res) => {
   try {
     const tipo = await Tipo.findByIdAndDelete(req.params.id);
     if (!tipo) {

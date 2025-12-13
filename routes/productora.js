@@ -1,12 +1,15 @@
 const { Router } = require('express');
 const Productora = require('../models/Productora');
 const { validationResult, check } = require('express-validator');
+const { verificarToken, soloAdmin } = require('../middleware/auth');
 
 const router = Router();
 
 // POST - Crear productora
 router.post(
   '/',
+  verificarToken,
+  soloAdmin,
   [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('estado', 'El estado debe ser Activo o Inactivo').isIn(['Activo', 'Inactivo']),
@@ -43,7 +46,7 @@ router.post(
 );
 
 // GET - Obtener todas las productoras
-router.get('/', async (req, res) => {
+router.get('/', verificarToken, async (req, res) => {
   try {
     const productoras = await Productora.find();
     res.json(productoras);
@@ -54,7 +57,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET - Obtener productoras activas
-router.get('/activas', async (req, res) => {
+router.get('/activas', verificarToken, async (req, res) => {
   try {
     const productoras = await Productora.find({ estado: 'Activo' });
     res.json(productoras);
@@ -65,7 +68,7 @@ router.get('/activas', async (req, res) => {
 });
 
 // PUT - Actualizar productora
-router.put('/:id', async (req, res) => {
+router.put('/:id', verificarToken, soloAdmin, async (req, res) => {
   try {
     const { nombre, estado, slogan, descripcion } = req.body;
     const productora = await Productora.findByIdAndUpdate(
@@ -86,7 +89,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE - Eliminar productora
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verificarToken, soloAdmin, async (req, res) => {
   try {
     const productora = await Productora.findByIdAndDelete(req.params.id);
     if (!productora) {

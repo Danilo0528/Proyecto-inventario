@@ -77,7 +77,7 @@ const Director = () => {
             </tbody>
         </table>
 
-        {/* Modal para DirectorForm */}
+        /* Modal para DirectorForm veentana emergente */
         <div className={`modal fade ${showForm ? 'show d-block' : ''}`} tabIndex="-1" style={{ backgroundColor: showForm ? 'rgba(0,0,0,0.5)' : '' }}>
             <div className="modal-dialog modal-lg modal-dialog-centered">
                 <div className="modal-content">

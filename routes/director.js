@@ -1,12 +1,15 @@
 const { Router } = require('express');
 const Director = require('../models/Director');
 const { validationResult, check } = require('express-validator');
+const { verificarToken, soloAdmin } = require('../middleware/auth');
 
 const router = Router();
 
 // POST - Crear director
 router.post(
   '/',
+  verificarToken,
+  soloAdmin,
   [
     check('nombres', 'Los nombres son obligatorios').not().isEmpty(),
     check('estado', 'El estado debe ser Activo o Inactivo').isIn(['Activo', 'Inactivo']),
@@ -36,7 +39,7 @@ router.post(
 );
 
 // GET - Obtener todos los directores
-router.get('/', async (req, res) => {
+router.get('/', verificarToken, async (req, res) => {
   try {
     const directores = await Director.find();
     res.json(directores);
@@ -47,7 +50,7 @@ router.get('/', async (req, res) => {
 });
 
 // GET - Obtener directores activos
-router.get('/activos', async (req, res) => {
+router.get('/activos', verificarToken, async (req, res) => {
   try {
     const directores = await Director.find({ estado: 'Activo' });
     res.json(directores);
@@ -58,7 +61,7 @@ router.get('/activos', async (req, res) => {
 });
 
 // PUT - Actualizar director
-router.put('/:id', async (req, res) => {
+router.put('/:id', verificarToken, soloAdmin, async (req, res) => {
   try {
     const { nombres, estado } = req.body;
     const director = await Director.findByIdAndUpdate(
@@ -79,7 +82,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE - Eliminar director
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verificarToken, soloAdmin, async (req, res) => {
   try {
     const director = await Director.findByIdAndDelete(req.params.id);
     if (!director) {

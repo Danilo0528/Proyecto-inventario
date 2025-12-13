@@ -1,12 +1,15 @@
 const { Router } = require('express');
 const Genero = require('../models/Genero');
 const { validationResult, check } = require('express-validator');
+const { verificarToken, soloAdmin } = require('../middleware/auth');
 
 const router = Router();
 
 // POST - Crear género
 router.post(
   '/',
+  verificarToken,
+  soloAdmin,
   [
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('estado', 'El estado debe ser Activo o Inactivo').isIn(['Activo', 'Inactivo']),
@@ -43,11 +46,11 @@ router.post(
 );
 
 // GET - Obtener todos los géneros
-router.get('/', async (req, res) => {
+router.get('/', verificarToken, async (req, res) => {
     try {
-        console.log('--- Antes de la consulta a la base de datos ---'); // <-- Añade esto
+        console.log('--- Antes de la consulta a la base de datos ---');
         const generos = await Genero.find();
-        console.log('--- Después de la consulta a la base de datos ---'); // <-- Añade esto
+        console.log('--- Después de la consulta a la base de datos ---'); 
         res.json(generos);
     } catch (error) {
         console.error(error);
@@ -57,7 +60,7 @@ router.get('/', async (req, res) => {
 
 
 // GET - Obtener géneros activos
-router.get('/activos', async (req, res) => {
+router.get('/activos', verificarToken, async (req, res) => {
   try {
     const generos = await Genero.find({ estado: 'Activo' });
     res.json(generos);
@@ -68,7 +71,7 @@ router.get('/activos', async (req, res) => {
 });
 
 // GET - Obtener género por ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', verificarToken, async (req, res) => {
   try {
     const genero = await Genero.findById(req.params.id);
     if (!genero) {
@@ -82,7 +85,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // PUT - Actualizar género
-router.put('/:id', async (req, res) => {
+router.put('/:id', verificarToken, soloAdmin, async (req, res) => {
   try {
     const { nombre, estado, descripcion } = req.body;
     const genero = await Genero.findByIdAndUpdate(
@@ -103,7 +106,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // DELETE - Eliminar género
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', verificarToken, soloAdmin, async (req, res) => {
   try {
     const genero = await Genero.findByIdAndDelete(req.params.id);
     if (!genero) {
