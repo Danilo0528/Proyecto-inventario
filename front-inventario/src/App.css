@@ -22,7 +22,7 @@ body {
   color: var(--text-primary);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   line-height: 1.6;
-  padding-top: 5rem; /* Añadido para dejar espacio para el navbar fijo */
+  padding-top: 5rem; 
 }
 
 .container {
@@ -408,7 +408,7 @@ body {
   animation: fadeInUp 0.8s ease-out;
 }
 
-/* Scroll personalizado */
+/* Scroll personalizado los :: significan para escojer el elemento especifico para aplicar el estilo a la barra de desplazamiento*/
 ::-webkit-scrollbar {
   width: 8px;
 }
