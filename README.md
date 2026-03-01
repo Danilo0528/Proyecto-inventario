@@ -12,7 +12,7 @@ Se ha implementado un sistema completo de autenticación y autorización basado 
 - ✅ Tokens JWT con expiración de 24 horas
 
 ## PRESENTADO POR
-## ESTEBAN URRUTIA BERMIDEZ
+## ESTEBAN URRUTIA BERMUDEZ
 [render](https://inventario-front-it4i.onrender.com/)
 hay veses que el servidor no conecta de demora unos minutos en reactivarse pero esta funcional en ambos sentidos
 ## Requisitos
